@@ -3,11 +3,10 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-import re
+
 import scrapy
 
 from itemloaders.processors import TakeFirst, MapCompose, Compose
-
 
 def process_links(values):
     # Список для хранения всех найденных ссылок
@@ -24,11 +23,11 @@ def process_links(values):
             if url.startswith('//'):
                 url = 'http:' + url
             # Добавляем обработанный URL в список, если это ссылка
-            if url.startswith('http') and (url.find("photo") == -1):
+            if url.startswith('http'):
                 urls.add(url)
 
-    # Убираем дубликаты и возвращаем список
     return list(urls)
+
 
 class PicjumboItem(scrapy.Item):
     name = scrapy.Field(output_processor=TakeFirst())
