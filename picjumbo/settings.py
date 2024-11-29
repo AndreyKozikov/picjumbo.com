@@ -11,6 +11,7 @@ BOT_NAME = "picjumbo"
 
 SPIDER_MODULES = ["picjumbo.spiders"]
 NEWSPIDER_MODULE = "picjumbo.spiders"
+IMAGES_STORE = "photos"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,6 +65,7 @@ COOKIES_ENABLED = True
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    "picjumbo.pipelines.PicjumboPipeline": 300,
+   "picjumbo.pipelines.PhotosPipline": 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
